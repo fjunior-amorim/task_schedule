@@ -1,0 +1,56 @@
+.conteiner {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .content {
+        width: 230px;
+        height: 230px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background-color: rgb(46, 46, 46);
+
+        .relogio {
+            width: 210px;
+            height: 210px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: rgb(14, 14, 14);
+
+            .tela {
+                width: 180px;
+                height: 180px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                border-radius: 50%;
+                border-width: 0.5px;
+                border-style: dotted;
+                border-width: 2px;
+                border-color: rgba(255, 255, 255, 0.473);
+                border-block-width: 5px;
+                background-image: radial-gradient(rgb(44, 44, 44), black);
+
+                h1,
+                .dia {
+                    color: white;
+                    line-height: 100%;
+	                text-transform: uppercase;
+	                font-family: 'Open Sans', Helvetica, sans-serif;
+	                -webkit-font-smoothing: antialiased;
+                }
+                p {
+                    color: white;
+	                font-family: 'Open Sans', Helvetica, sans-serif;
+                }
+                
+            }
+        }
+    }
+}

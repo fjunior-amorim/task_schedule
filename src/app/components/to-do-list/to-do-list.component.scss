@@ -1,0 +1,19 @@
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    button {
+        background: none;
+        border: none;
+
+        i {
+            color: white;
+
+            &:hover {
+                cursor: pointer;
+                color: rgb(250, 90, 90);
+            }
+        }
+    }
+}

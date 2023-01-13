@@ -1,0 +1,53 @@
+.calendario {
+  width: 100%;
+
+  .head {
+        background-color: rgba(0, 255, 255, 0.418);
+        padding: 5px;
+
+        .content-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin-bottom: 5px;
+
+            i {
+            font-size: 20px;
+            margin: 5px;
+            padding: 5px;
+
+            &:hover {
+                cursor: pointer;
+                color: rgb(255, 1, 1);
+            }
+            }
+        }
+        .content-body {
+            text-align: center;
+        }
+    }
+  
+
+  table {
+    width: 100%;
+    height: 250px;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.438);
+    border-collapse: collapse;
+    padding: 15px;
+
+    thead,
+    tbody {
+      width: 98%;
+    }
+
+    td {
+      width: 44.63px;
+      margin: 1px;
+    }
+
+    td:hover {
+      background-color: aquamarine;
+    }
+  }
+}
