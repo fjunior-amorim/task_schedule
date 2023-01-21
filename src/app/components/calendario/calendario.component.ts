@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'calendario',
@@ -12,88 +12,56 @@ export class CalendarioComponent implements OnInit {
     "Maio","Junho","Julho","Augosto",
     "Setembro","Outobro","Novembro","Decembro"
   ];
-
-  date: Date = new Date();
-  day: string = this.date.toDateString();
-  month: string = '';
+  
+  date = new Date();
+  day = this.date.toDateString();
+  month = this.months[this.date.getMonth()];
+  lastDate = new Date(this.date.getFullYear(), this.date.getMonth() + 1, 0).getDate();
   weeksDays: string[] = ['DOM', 'SEG', 'TER', 'QUA', 'QUI', 'SEc', 'SAB'];
-
-  
-  
-  lastDay = new Date(this.date.getFullYear(), 
-  this.date.getMonth() + 1, 0
-  ).getDate();
-
-  prevLastDay = new Date(this.date.getFullYear(),
-   this.date.getMonth(), 0
-  ).getDate();
-  firstDayIndex = this.date.getDay();
-
-  lastDayIndex = new Date(this.date.getFullYear(), 
-  this.date.getMonth() + 1, 0
-  ).getDay();
-  nextDaysMonth = 7 - this.lastDayIndex - 1;
 
   monthDays: number[] = [];
   nextDays: number[] = [];
   firstDays: number[] = [];
 
-  constructor() {  }
-
-  getMonthDays() {
-    for (let i = 1; i <= this.lastDay; i++) {
-      this.monthDays.push(i);
-    }
-
-    for (let i = this.firstDayIndex; i > 0; i--) {
-      this.firstDays.push(this.prevLastDay - i);
-    }
-
-    for (let i = 1; i <= this.nextDaysMonth; i++) {
-      this.nextDays.push(i);
-    }
-
-  }
-  cont: number = this.date.getMonth();
-  onClickNext() {
-    if(this.cont < 0) {
-      this.cont = 11;
-      this.getMonths(this.cont);
-    }else if(this.cont === 12) {
-      this.cont = 0;
-      this.getMonths(this.cont);
-    }else {
-      this.getMonths(this.cont++);
-      console.log(this.cont)
-    }
-  }
-  onClickPrev() {
-    if(this.cont < 0 || this.cont === -1) {
-      this.cont = 11;
-      this.getMonths(this.cont);
-    }else if(this.cont === 12) {
-      this.cont = 0;
-      this.getMonths(this.cont);
-    }else {
-      this.getMonths(this.cont--);
-      console.log(this.cont)
-    }
-  }
-
-  //metodo para pegar o index do mes e passar para o array dos messes
-  getMonths(mes: number) {
-    const d = new Date();
-    //o mes e setado de acordo com o valor recebido do parametro
-    d.setMonth(mes);
-    this.month = this.months[d.getMonth()];
-    this.months[d.getMonth()];
-  }
-
   ngOnInit() {
-    console.log(this.prevLastDay)
-    console.log(this.firstDayIndex)
-    this.getMonthDays();
-    this.getMonths(this.cont);
-    
+    this.renderCalendar();
+  }
+
+  onClickNext()  {
+    this.date.setMonth(this.date.getMonth() + 1)
+    this.month = this.months[this.date.getMonth()];
+    this.monthDays = [];
+    this.firstDays = [];
+    this.nextDays = [];
+    this.renderCalendar();
+  }
+
+  onClickPrev() {
+    this.date.setMonth(this.date.getMonth() - 1)
+    this.month = this.months[this.date.getMonth()];
+    this.monthDays = [];
+    this.firstDays = [];
+    this.nextDays = [];
+    this.renderCalendar();
+  }
+
+  renderCalendar() {
+    const  lastDayIndex = new Date(this.date.getFullYear(), this.date.getMonth() + 1, 0).getDay();
+    const  firstDayIndex = new Date(this.date.getFullYear(), this.date.getMonth(), 1).getDay();
+    const  nextDayIndex = 7 - lastDayIndex - 1;
+    const  prevLastDay = new Date(this.date.getFullYear(), this.date.getMonth() + 1, 0).getDate();
+    const  prevDay = new Date(this.date.getFullYear(), this.date.getMonth(), 0).getDate();
+
+    for (let i = 1; i <= prevLastDay; i++) {
+      this.monthDays.push(i);      
+    }
+
+    for (let i = firstDayIndex; i > 0; i--) {
+      this.firstDays.push(prevDay + 1 - i);
+    }
+
+    for (let i = 1; i <= nextDayIndex; i++) {
+      this.nextDays.push(i)
+    }
   }
 }

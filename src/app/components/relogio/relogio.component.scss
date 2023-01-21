@@ -33,7 +33,7 @@
                 border-radius: 50%;
                 border-width: 0.5px;
                 background-image: radial-gradient(rgb(44, 44, 44), black);
-
+                
                 &::after {
                     position: absolute;
                     content: '';
@@ -89,6 +89,9 @@
 }
 
 @keyframes example02 {
+    0% {
+        transform: rotate(0deg);
+    }
     100% {
         transform: rotate(360deg);
     }

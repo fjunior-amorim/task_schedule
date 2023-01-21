@@ -75,21 +75,12 @@ export class RelogioComponent implements OnInit {
     const h = new Date().getHours()
     const m = new Date().getMinutes()
 
-    if (h < 10) {
-      if(m < 10) {
-        this.minutos = `0${m}`
-      }else {
-        this.horas = `0${h}`
-        this.minutos = `${m}`
-      }
-    } else {
-      if(m < 10) {
-        this.minutos = `0${m}`
-      }else {
-        this.horas = `${h}`
-        this.minutos = `${m}`
-      }
-    }
+    if (h < 10) {this.horas = `0${h}`}
+    else {this.horas = `${h}`}
+
+    if (m < 10) {this.minutos = `0${m}`}
+    else {this.minutos = `${m}`}
+    
   }
 
   ngOnInit() {

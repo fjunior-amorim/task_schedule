@@ -16,9 +16,8 @@
     </div>
 
     <div class="month-days">
-  
       <div *ngFor="let days of firstDays" class="first-days">{{ days }}</div>
-      <div *ngFor="let day of monthDays">{{ day }}</div>
+      <div #days *ngFor="let day of monthDays">{{ day }}</div>
       <!--div class="current-day">14</div-->
       <div class="next-days" *ngFor="let days of nextDays">{{ days }}</div>
     </div>

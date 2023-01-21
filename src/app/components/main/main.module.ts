@@ -8,15 +8,13 @@ import { ScheduleComponent } from '../schedule/schedule.component';
 import { CalendarioComponent } from '../calendario/calendario.component';
 import { RelogioComponent } from '../relogio/relogio.component';
 
-
-
 @NgModule({
   declarations: [
     MainComponent,
     ToDoListComponent,
     ScheduleComponent,
     CalendarioComponent,
-    RelogioComponent
+    RelogioComponent,
   ],
   imports: [
     CommonModule,
